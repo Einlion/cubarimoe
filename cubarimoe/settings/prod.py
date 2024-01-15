@@ -4,6 +4,7 @@ from .base import *
 
 
 CANONICAL_ROOT_DOMAIN = "cubari.renne.network"
+CSRF_TRUSTED_ORIGINS = ['https://cubari.renne.network']
 SECURE_HSTS_SECONDS = 60
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
