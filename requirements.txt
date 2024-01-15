@@ -10,7 +10,6 @@ psycopg2==2.9.9
 python-memcached==1.61
 redis
 hiredis
-daphne
 setuptools==69.0.3
 uwuify==1.3.0
 wheel==0.42.0

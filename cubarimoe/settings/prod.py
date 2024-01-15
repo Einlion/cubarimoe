@@ -14,7 +14,7 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = "ALLOW"
 
 DEBUG = False
@@ -39,7 +39,7 @@ LOGGING = {
             "level": "ERROR",
             "class": "logging.handlers.RotatingFileHandler",
             "formatter": "verbose",
-            "filename": os.path.join(PARENT_DIR, "cubarimoe.log"),
+            "filename": "/home/renne/logs/cubarimoe.log",
             "maxBytes": 1024 * 1024 * 100,  # 100 mb
         }
     },
