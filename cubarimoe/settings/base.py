@@ -31,6 +31,7 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     "reader.apps.ReaderConfig",
     "homepage.apps.HomepageConfig",
     "misc.apps.MiscConfig",
