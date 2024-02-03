@@ -47,85 +47,8 @@
 	<div class="home-background"></div>
 	{% include "tracking.html" %}
 	{% load cache %} {% cache 1 sidebar %}
-	<header>
-		<a class="donate" href="https://patreon.com/algoinde"><span>‹</span>&nbsp;&nbsp;send coffee?&nbsp;&nbsp;<span>›</span></a>
-		<a href="/" class="cubari-logo"></a>
-		<a class="rhombutton icon-help" id="help-button" onclick="openModal('about')"></a>
-	</header>
 	{% endcache %} {% block body %} {% endblock %}
 	</div>
-	<div id="layers">
-		<article id="about" class="hidden">
-			<a class="rhombutton icon-close"></a>
-			<h2>What's this thing?</h2>
-			<p>This website is an image proxy. It takes images from other websites and displays them in a better manga-oriented reader, Cubari.</p>
-			<p>Cubari does not host any of the content you are viewing. Just like your computer does not store or own all the images you see on the internet, Cubari is doing the same thing. We are simply a service that lets you view other data on the internet using our custom UI.</p>
-			<p>This reader was born while developing Guya.moe, the website to host Kaguya. After a while we added a lot of useful features, and now we branched it into a separate domain. We don't host anything, this is just a web image viewer that can parse other websites.</p>
-
-			<h2>What are the sites you can proxy?</h2>
-			<p>Currently it supports imgur, nhentai and custom appropriately-formatted JSON hosted on GitHub Gists. This is an advanced feature and will be explained in detail below.</p>
-
-			<h2>Are you the next Mangadex?</h2>
-			<p>No, but we might become a web version Tachiyomi. This is not a guarantee, though.</p>
-
-			<h2>Add [X]!</h2>
-			<p>For now we wont accept feature requests because we have a pretty straightforward roadmap that we need to realize first. Keep an eye on us, something new might pop up soon.</p>
-
-			<h2>What will happen to Guya?</h2>
-			<p>Nothing. We're still fans of Kaguya, so it will just stay there on Guya.moe and will continue utilizing our nice manga reader. We're just branching out the proxy stuff.</p>
-
-			<h2>Github Gists</h2>
-			<p>Supplying the reader with special code that tells the reader where the images are lets you display series of chapters. A thorough guide can be found in this <a href="https://www.reddit.com/r/manga/comments/mcicbp/sl_how_to_host_a_series_on_imgur_with_guyamoe/" target="_blank">reddit post</a> while we work on making a user-friendly constructor for this.</p>
-
-			<h2>Data Synchronisation</h2>
-			<p>You can synchronise your reading history across different devices using a third-party data storage service that's powered by the open source <code>remotestorage</code> protocol. Visit our homepage and scroll down to learn more.</p>
-
-			<h2>What about Tachiyomi?</h2>
-			<p>We support that too! Get the extension <a href="https://tachiyomi.org/extensions/#all.cubari" target="_blank">here</a>. It unlocks the ability to open Cubari links in the app. In addition, if you sign into a <code>remotestorage</code> account <sup>[1]</sup>, the Tachiyomi extension will show your reading history and pinned galleries.</p>
-			<p><i><sup>[1]</sup> You must first open a webview and sign into your <code>remotestorage</code> account</i></p>
-
-		</article>
-	</div>
-	<script>
-		const layerHandler = e => {
-		let article = e.target.closest('article');
-			if(article == null || e.target.classList.contains('icon-close')) {
-				closeModal();
-			}
-		}
-
-		const openModal = (modal) => {
-			document.getElementById(modal).classList.remove('hidden');
-		let offset = window.innerWidth - document.documentElement.scrollWidth;
-			document.body.firstElementChild.style.paddingRight = offset + 'px';
-			Array.prototype.forEach.call(document.querySelectorAll('article .rhombutton.icon-close'), x => {x.style.right = offset + 'px'})
-			document.body.style.overflow = 'hidden';
-		}
-
-		const closeModal = (m) => {
-		let children = Array.prototype.reverse.call(document.getElementById('layers').children);
-			for (var i = 0; i < children.length; i++) {
-			let l = children[i];
-				if(!l.classList.contains('hidden')) {
-					l.classList.add('hidden');
-					break;
-				}
-			}
-			Array.prototype.forEach.call(document.querySelectorAll('article .rhombutton.icon-close'), x => {x.style.right = ''})
-			document.body.style.overflow = '';
-			document.body.firstElementChild.style.paddingRight = '';
-		}
-		document.getElementById('layers').addEventListener("click", layerHandler);
-
-		const toggleFocus = (e) => {
-			if(e.target.closest('.search-box')) {
-				document.body.classList.add('search-focus');
-			}else{
-				document.body.classList.remove('search-focus');
-			}
-		}
-		document.body.addEventListener("click", toggleFocus);
-	</script>
 	<script>
 		isiOSAux = (window.navigator.standalone == true);
 		if(isiOSAux) {

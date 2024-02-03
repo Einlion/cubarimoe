@@ -16,23 +16,25 @@ from .sources.reddit import Reddit
 from .sources.mangadventure import MangAdventure
 from .sources.dynasty import Dynasty
 from .sources.catbox import Catbox
+from .sources.manga import Manga
 
 sources = [
-    MangaDex(),
-    NHentai(),
+    Manga()
+    # MangaDex(),
+    # NHentai(),
     # FoolSlide(),
-    MangAdventure(),
-    ReadManhwa(),
-    Imgur(),
+    # MangAdventure(),
+    # ReadManhwa(),
+    # Imgur(),
     # MangaBox(),
     # Hitomi(),
-    Gist(),
-    MangaKatana(),
-    NepNep(),
-    Imgbox(),
-    ImageChest(),
-    Reddit(),
-    Imgbb(),
-    Dynasty(),
-    Catbox()
+    # Gist(),
+    # MangaKatana(),
+    # NepNep(),
+    # Imgbox(),
+    # ImageChest(),
+    # Reddit(),
+    # Imgbb(),
+    # Dynasty(),
+    # Catbox()
 ]

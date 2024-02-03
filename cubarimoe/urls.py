@@ -19,35 +19,58 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.conf import settings
+from .views import *
 
-from homepage.sitemaps import (
-    PagesListViewSitemap,
-    PageViewSitemap,
-    StaticViewSitemap,
-)
+# from homepage.sitemaps import (
+#     PagesListViewSitemap,
+#     PageViewSitemap,
+#     StaticViewSitemap,
+# )
 from proxy import sources
 
-sitemaps = {
-    "static": StaticViewSitemap,
-    "pageslist": PagesListViewSitemap,
-    "page": PageViewSitemap,
-}
+# sitemaps = {
+#     "static": StaticViewSitemap,
+#     "pageslist": PagesListViewSitemap,
+#     "page": PageViewSitemap,
+# }
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include("homepage.urls")),
-    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}),
-    path("pages/", include("misc.urls")),
+    re_path(
+        r"^(?P<chapter>[0-9]+)/(?P<page>[0-9]+)",
+        home_redirect,
+        name="home-redirect",
+    ),
+    re_path(
+        r"^(?P<chapter>[0-9]+)",
+        home_redirect,
+        name="home-redirect-chapter",
+    ),
     path(
         "",
-        include(
-            [route for source in sources for route in source.register_shortcut_routes()]
-        ),
+        home_redirect,
+        name="home-redirect-chapter-page",
     ),
+    # path("admin/", admin.site.urls),
+    # path("", include("homepage.urls")),
+    # path("sitemap.xml", sitemap, {"sitemaps": sitemaps}),
+    # path("pages/", include("misc.urls")),
+    # path(
+    #     "",
+    #     include(
+    #         [route for source in sources for route in source.register_shortcut_routes()]
+    #     ),
+    # ),
     path(f"{settings.PROXY_BASE_PATH}/", include("proxy.urls")),
 ]
+
+    # path(
+    #     "",
+    #     include(
+    #         [route for source in sources for route in source.register_frontend_routes()]
+    #     ),
+    # ),
 
 handler404 = "homepage.views.handle404"
 

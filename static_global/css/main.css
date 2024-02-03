@@ -423,6 +423,7 @@ article h2 {
 	margin: 0 auto;
 	width: 60rem;
 	margin-bottom: 5rem;
+	padding-top: 0.5rem;
 }
 
 .series-content:after {
@@ -495,6 +496,8 @@ article h2 {
 	margin-top: 0.5em;
 	font-size: 0.9em;
 	color: #ccc;
+	text-align: justify;
+	text-justify:inter-word;
 }
 
 .series-content article p:nth-of-type(1) {
@@ -529,7 +532,7 @@ article h2 {
 .series-content #chapters th {
 	white-space: nowrap;
 	padding: 0 0.75em;
-	line-height: 3em;
+	line-height: 2.6em;
 	font-weight: normal;
 	font-size: 1em;
 	border-bottom: 0;
@@ -651,10 +654,11 @@ article h2 {
 
 .series-content #chapterTitleSearch {
 	border: none !important;
+	outline: none !important;
 	background: rgba(0, 0, 0, 0.2) !important;
 	border-radius: 0 !important;
 	line-height: inherit;
-	height: 3em;
+	height: 2.6em;
 	color: white;
 	padding-left: 1em;
 }
@@ -812,6 +816,11 @@ aside .table td, aside .table th {
 .manga-link.chapter.no-chapter .manga-link-chap {
 	display: none;
 }
+
+.manga-link {
+	margin-top: 1rem;
+}
+
 
 .manga-card {
 	display: block;
